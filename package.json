@@ -4,19 +4,25 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "Ciro S. Costa <ciro9758@gmail.com> (http://www.cirocosta.com/)",
   "license": "MIT",
+  "browser": {
+    "request": "browser-request"
+  },
   "dependencies": {
-    "http-browserify": "^1.4.1",
-    "q": "^1.0.1"
+    "browser-request": "^0.3.2",
+    "q": "^1.0.1",
+    "request": "^2.39.0"
   },
   "devDependencies": {
+    "browserify": "^5.9.1",
     "gulp": "^3.8.7",
-    "gulp-browserify": "^0.5.0",
+    "gulp-rename": "^1.2.0",
     "gulp-uglify": "^0.3.1",
+    "jest-cli": "^0.1.18",
     "rimraf": "^2.2.8",
-    "sinon": "^1.10.3"
+    "vinyl-source-stream": "^0.1.1"
   }
 }

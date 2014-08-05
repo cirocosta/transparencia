@@ -1,15 +1,25 @@
 'use strict';
 
 var gulp = require('gulp')
-  , browserify = require('gulp-browserify')
+  , browserify = require('browserify')
   , uglify = require('gulp-uglify')
+  , source = require('vinyl-source-stream')
+  , rename = require('gulp-rename')
   , rimraf = require('rimraf');
 
-gulp.task('build', function () {
-  return gulp.src(['src/transparencia.js'])
-    .pipe(browserify({standalone: 'transparencia'}))
+
+gulp.task('browserify', function () {
+  return browserify('./src/transparencia.js')
+    .bundle()
+    .pipe(source('transparencia.js'))
+    .pipe(gulp.dest('./dist/'));
+});
+
+gulp.task('build', ['browserify'], function () {
+  return gulp.src('./dist/transparencia.js')
     .pipe(uglify({mangle: true}))
-    .pipe(gulp.dest('dist'));
+    .pipe(rename('transparencia.min.js'))
+    .pipe(gulp.dest('dist/'));
 });
 
 gulp.task('clean', function () {
@@ -20,4 +30,8 @@ gulp.task('clean', function () {
   });
 });
 
-gulp.task('default', ['test', 'build']);
+gulp.task('watch', function() {
+  gulp.watch(paths.scripts, ['build']);
+});
+
+gulp.task('default', ['build']);
