@@ -1,0 +1,1 @@
+# transparência.js
