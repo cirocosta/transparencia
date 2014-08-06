@@ -11,6 +11,9 @@
   "browser": {
     "request": "browser-request"
   },
+  "jest": {
+  	"testDirectoryName": "test"
+	},
   "dependencies": {
     "browser-request": "^0.3.2",
     "q": "^1.0.1",

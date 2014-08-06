@@ -10,3 +10,5 @@ function Transparencia (token) {
 
   this.token = token;
 }
+
+module.exports = Transparencia;
