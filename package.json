@@ -26,6 +26,12 @@
   "jest": {
     "testDirectoryName": "test"
   },
+  "testling": {
+  	"files": "test/*.js",
+  	"browsers": [
+  		"chrome/lastest"
+  	]
+	},
   "dependencies": {
     "browser-request": "^0.3.2",
     "request": "^2.39.0",

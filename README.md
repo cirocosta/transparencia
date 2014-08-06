@@ -18,6 +18,7 @@ $ bower install --save transparencia
 
 ## Usage
 
+
 ### Códigos de erro
 
 | Code |          Text         |                                       Description                                        |
@@ -31,3 +32,8 @@ $ bower install --save transparencia
 |  422 | Unprocessable Entity  | A requisição possui erros de negócio.                                                    |
 |  429 | Too Many Requests     | O consumidor estourou o limite de requisições por tempo.                                 |
 |  500 | Internal Server Error | Erro não esperado, algo está quebrado na API.                                            |
+
+
+## Browser Compatibility
+
+Using [testling-ci](https://ci.testling.com/) is a must. It is certainly in the road map :neckbeard:
