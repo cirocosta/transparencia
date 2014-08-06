@@ -1,26 +1,38 @@
 {
-  "name": "transparencia-wrapper",
-  "version": "0.0.0",
-  "description": "",
+  "name": "transparencia",
+  "version": "0.0.1",
+  "description": "Um wrapper javascript sobre a do dev.transparencia.gov.br",
   "main": "index.js",
   "scripts": {
     "test": "jest"
   },
   "author": "Ciro S. Costa <ciro9758@gmail.com> (http://www.cirocosta.com/)",
+  "directories": {
+    "example": "examples",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cirocosta/transparencia.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cirocosta/transparencia/issues"
+  },
+  "homepage": "https://github.com/cirocosta/transparencia",
   "license": "MIT",
   "browser": {
     "request": "browser-request"
   },
   "jest": {
-  	"testDirectoryName": "test"
-	},
+    "testDirectoryName": "test"
+  },
   "dependencies": {
     "browser-request": "^0.3.2",
-    "q": "^1.0.1",
-    "request": "^2.39.0"
+    "request": "^2.39.0",
+    "q": "^1.0.1"
   },
   "devDependencies": {
-    "browserify": "^5.9.1",
+    "browserify": "^5.8.1",
     "gulp": "^3.8.7",
     "gulp-rename": "^1.2.0",
     "gulp-uglify": "^0.3.1",
