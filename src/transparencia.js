@@ -42,6 +42,43 @@ Transparencia.prototype._prepare = function (a, b) {
     this.ops = a || {};
 };
 
+/**
+ * Entrance functions -- must be called first
+ */
+Transparencia.prototype.candidatos = function (a, b) {
+  this.url = API_SERVER + '/candidatos';
+
+  return (this._prepare(a, b), this);
+};
+
+Transparencia.prototype.partidos = function (a, b) {
+  this.url = API_SERVER + '/partidos';
+
+  return (this._prepare(a, b), this);
+};
+
+Transparencia.prototype.estados = function (a, b) {
+  this.url = API_SERVER + '/estados';
+
+  return (this._prepare(a, b), this);
+};
+
+Transparencia.prototype.cargos = function (a, b) {
+  this.url = API_SERVER + '/cargos';
+
+  return (this._prepare(a, b), this);
+};
+
+Transparencia.prototype.excelencias = function (a, b) {
+  this.url = API_SERVER + '/excelencias';
+
+  return (this._prepare(a, b), this);
+};
+
+/**
+ * Complementary -- called after
+ */
+
 Transparencia.prototype.bens = function (a) {
   return (this._prepare('bens', a), this);
 };
@@ -58,11 +95,5 @@ Transparencia.prototype.estatisticas = function (a) {
   return (this._prepare('estatisticas', a), this);
 };
 
-Transparencia.prototype.candidatos = function (a, b) {
-  this.url = API_SERVER + '/candidatos';
-  this._prepare(a, b);
-
-  return this;
-};
 
 module.exports = Transparencia;
