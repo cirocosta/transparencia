@@ -25,7 +25,7 @@ describe('Transparencia', function() {
   var token = 'TOKEN';
   var transp = new Transparencia(token);
 
-  describe('_get', function() {
+  describe('get', function() {
     beforeEach(function (done) {
       sinon.stub(request, 'get');
       done();
@@ -37,7 +37,7 @@ describe('Transparencia', function() {
     });
 
     it('should use the token', function() {
-      transp._get('URL');
+      transp.get('URL');
 
       var expected = {'App-Token': token};
       var actual = request.get.getCall(0).args[0].headers;
@@ -46,8 +46,8 @@ describe('Transparencia', function() {
       assert.deepEqual(actual, expected);
     });
 
-    it('should use data', function() {
-      transp._get('URL', {estado: 'SP'});
+    it('should use data and url as parameters', function() {
+      transp.get('URL', {estado: 'SP'});
 
       var expected = {estado: 'SP'};
       var actual = request.get.getCall(0).args[0].qs;
@@ -59,44 +59,53 @@ describe('Transparencia', function() {
 
   describe('candidatos', function() {
     beforeEach(function (done) {
-      sinon.stub(transp, '_get');
+      sinon.stub(request, 'get');
       done();
     });
 
     afterEach(function (done) {
-      transp._get.restore();
+      request.get.restore();
       done();
     });
 
     it('call correct list endpoint', function() {
-      transp.candidatos();
+      transp.candidatos().get();
 
       var expected = 'https://api.transparencia.org.br/api/v1/candidatos';
-      var actual = transp._get.getCall(0).args[0];
+      var actual = request.get.getCall(0).args[0].uri;
 
-      assert(transp._get.calledOnce);
+      assert(request.get.calledOnce);
       assert.equal(actual, expected);
     });
 
-    it('call correct candidato endpoint with params', function () {
-      transp.candidatos({estado: 'SP', cargo: 3});
+    it('call correct /candidato endpoint with params', function () {
+      transp.candidatos({estado: 'SP', cargo: 3}).get();
 
       var expected = {estado: 'SP', cargo: 3};
-      var actual = transp._get.getCall(0).args[1];
+      var actual = request.get.getCall(0).args[0].qs;
 
-      assert(transp._get.calledOnce);
+      assert(request.get.calledOnce);
       assert.deepEqual(actual, expected);
     });
 
-    it('call correct candidato/id endpoint', function () {
-      transp.candidatos('ID');
+    it('call correctly /candidato/id endpoint', function () {
+      transp.candidatos('ID').get();
 
       var expected = 'https://api.transparencia.org.br/api/v1/candidatos/ID';
-      var actual = transp._get.getCall(0).args[0];
+      var actual = request.get.getCall(0).args[0].uri;
 
-      assert(transp._get.calledOnce);
+      assert(request.get.calledOnce);
       assert.equal(actual, expected);
     });
 
+    it('call correct /candidato/id/doadores endpoint with params', function () {
+      transp.candidatos('ID').doadores({anoEleitoral: '2010'}).get();
+
+      var expected = {anoEleitoral: '2010'};
+      var actual = request.get.getCall(0).args[0].qs;
+
+      assert(request.get.calledOnce);
+      assert.deepEqual(actual, expected);
+    });
   });
 });

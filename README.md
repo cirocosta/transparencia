@@ -16,7 +16,37 @@ ou
 $ bower install --save transparencia
 ```
 
-## Usage
+## Uso
+
+Seu uso é feito a partir do conceito de funções *de entrada* e funções *complementares*.
+
+As funções *de entrada* são as bases dos endpoints: candidatos, partidos, estados, cargos, excelencias.
+As funções de *saída* são aquelas que complementam um endpoint: bens, doadores, candidaturas, estatisticas.
+
+Preparada a chamada, basta então executar a função `get` que retorna então uma promessa:
+
+```javascript
+var transparencia = new Transparencia('TOKEN');
+
+transparencia
+	.candidatos({estado: 'SP', cargo: 3})
+	.get()
+	.then(function (results) {
+	  console.log(results);
+	}, function (err) {
+	  console.error(err);
+	});
+
+transparencia
+	.candidatos('ID')
+	.doadores({anoEleitoral: '2010'})
+	.get()
+	.then(function (results) {
+	  console.log(results);
+	}, function (err) {
+	  console.error(err);
+	});
+```
 
 ### API
 
