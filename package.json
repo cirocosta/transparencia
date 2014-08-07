@@ -2,9 +2,9 @@
   "name": "transparencia",
   "version": "0.0.1",
   "description": "Um wrapper javascript sobre a do dev.transparencia.gov.br",
-  "main": "index.js",
+  "main": "src/transparencia.js",
   "scripts": {
-    "test": "jest"
+    "test": "mocha test"
   },
   "author": "Ciro S. Costa <ciro9758@gmail.com> (http://www.cirocosta.com/)",
   "directories": {
@@ -23,15 +23,12 @@
   "browser": {
     "request": "browser-request"
   },
-  "jest": {
-    "testDirectoryName": "test"
-  },
   "testling": {
-  	"files": "test/*.js",
-  	"browsers": [
-  		"chrome/lastest"
-  	]
-	},
+    "files": "test/*.js",
+    "browsers": [
+      "chrome/lastest"
+    ]
+  },
   "dependencies": {
     "browser-request": "^0.3.2",
     "request": "^2.39.0",
@@ -42,8 +39,9 @@
     "gulp": "^3.8.7",
     "gulp-rename": "^1.2.0",
     "gulp-uglify": "^0.3.1",
-    "jest-cli": "^0.1.18",
+    "mocha": "^1.21.4",
     "rimraf": "^2.2.8",
+    "sinon": "^1.10.3",
     "vinyl-source-stream": "^0.1.1"
   }
 }

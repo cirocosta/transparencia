@@ -18,6 +18,16 @@ $ bower install --save transparencia
 
 ## Usage
 
+### API
+
+|   Entrada   |                Descrição                 |
+| ----------- | ---------------------------------------- |
+| Candidatos  | Ops sobre candidatos                     |
+| Partidos    | Ops sobre partidos políticos brasileiros |
+| Estados     | Ops sobre estados da federação           |
+| Cargos      | Ops sobre cargos eletivos em 2014        |
+| Excelencias | Ops sobre parlamentares                  |
+
 
 ### Códigos de erro
 
