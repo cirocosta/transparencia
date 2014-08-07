@@ -35,18 +35,32 @@ Transparencia.prototype.get = function (url, ops) {
   return dfd.promise;
 };
 
-
-Transparencia.prototype.bens = function () {
-  this.url += '/bens';
-};
-
-Transparencia.prototype.candidatos = function (a, b) {
-  this.url = API_SERVER + '/candidatos';
-
+Transparencia.prototype._prepare = function (a, b) {
   if (typeof a == 'string' || a instanceof String)
     this.url += (this.ops = b || {}, '/' + a);
   else
     this.ops = a || {};
+};
+
+Transparencia.prototype.bens = function (a) {
+  return (this._prepare('bens', a), this);
+};
+
+Transparencia.prototype.doadores = function (a) {
+  return (this._prepare('doadores', a), this);
+};
+
+Transparencia.prototype.candidaturas = function (a) {
+  return (this._prepare('candidaturas', a), this);
+};
+
+Transparencia.prototype.estatisticas = function (a) {
+  return (this._prepare('estatisticas', a), this);
+};
+
+Transparencia.prototype.candidatos = function (a, b) {
+  this.url = API_SERVER + '/candidatos';
+  this._prepare(a, b);
 
   return this;
 };

@@ -78,7 +78,7 @@ describe('Transparencia', function() {
       assert.equal(actual, expected);
     });
 
-    it('call correct candidato endpoint with params', function () {
+    it('call correct /candidato endpoint with params', function () {
       transp.candidatos({estado: 'SP', cargo: 3}).get();
 
       var expected = {estado: 'SP', cargo: 3};
@@ -88,7 +88,7 @@ describe('Transparencia', function() {
       assert.deepEqual(actual, expected);
     });
 
-    it('call correct candidato/id endpoint', function () {
+    it('call correctly /candidato/id endpoint', function () {
       transp.candidatos('ID').get();
 
       var expected = 'https://api.transparencia.org.br/api/v1/candidatos/ID';
@@ -96,6 +96,16 @@ describe('Transparencia', function() {
 
       assert(request.get.calledOnce);
       assert.equal(actual, expected);
+    });
+
+    it('call correct /candidato/id/doadores endpoint with params', function () {
+      transp.candidatos('ID').doadores({anoEleitoral: '2010'}).get();
+
+      var expected = {anoEleitoral: '2010'};
+      var actual = request.get.getCall(0).args[0].qs;
+
+      assert(request.get.calledOnce);
+      assert.deepEqual(actual, expected);
     });
   });
 });
