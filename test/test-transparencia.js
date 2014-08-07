@@ -1,9 +1,9 @@
 'use strict';
 
-var Transparencia = require('../src/transparencia');
-var assert = require('assert');
-var sinon = require('sinon');
-var request = require('request');
+var Transparencia = require('../src/transparencia')
+  , assert = require('assert')
+  , sinon = require('sinon')
+  , request = require('request');
 
 describe('Transparencia', function() {
   it('be sane', function() {
@@ -45,6 +45,16 @@ describe('Transparencia', function() {
       assert(request.get.calledOnce);
       assert.deepEqual(actual, expected);
     });
+
+    it('should use data', function() {
+      transp._get('URL', {estado: 'SP'});
+
+      var expected = {estado: 'SP'};
+      var actual = request.get.getCall(0).args[0].qs;
+
+      assert(request.get.calledOnce);
+      assert.deepEqual(actual, expected);
+    });
   });
 
   describe('candidatos', function() {
@@ -67,5 +77,26 @@ describe('Transparencia', function() {
       assert(transp._get.calledOnce);
       assert.equal(actual, expected);
     });
+
+    it('call correct candidato endpoint with params', function () {
+      transp.candidatos({estado: 'SP', cargo: 3});
+
+      var expected = {estado: 'SP', cargo: 3};
+      var actual = transp._get.getCall(0).args[1];
+
+      assert(transp._get.calledOnce);
+      assert.deepEqual(actual, expected);
+    });
+
+    it('call correct candidato/id endpoint', function () {
+      transp.candidatos('ID');
+
+      var expected = 'https://api.transparencia.org.br/api/v1/candidatos/ID';
+      var actual = transp._get.getCall(0).args[0];
+
+      assert(transp._get.calledOnce);
+      assert.equal(actual, expected);
+    });
+
   });
 });

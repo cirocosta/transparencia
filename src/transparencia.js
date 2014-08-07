@@ -12,13 +12,14 @@ function Transparencia (token) {
   this.token = token;
 }
 
-Transparencia.prototype._get = function(url) {
+Transparencia.prototype._get = function (url, data) {
   var dfd = q.defer();
 
   request.get({
     uri: url,
     rejectUnauthorized: false,
     json: true,
+    qs: data,
     headers: {
       'App-Token': this.token
     }}, function (err, res, body) {
@@ -31,12 +32,31 @@ Transparencia.prototype._get = function(url) {
   return dfd.promise;
 };
 
-Transparencia.prototype.candidatos = function(id, end) {
-  var url = id
-    ? API_SERVER + '/candidatos/' + id
-    : API_SERVER + '/candidatos';
+// Transparencia.prototype.obj = {
+//   get: this._get
+// };
 
-  return this._get(url);
+Transparencia.prototype.candidatos = function (a, b) {
+  var url = API_SERVER + '/candidatos';
+  var id, ops;
+
+  if (typeof a == 'string' || a instanceof String)
+    url += (ops = b, '/' + a);
+  else
+    ops = a;
+
+  return this._get(url, ops);
+
+  // var scope = this;
+
+  // return {
+  //   get: scope._get,
+  //   bens: function () {
+  //     return {
+  //       get: scope._get
+  //     }
+  //   }
+  // };
 };
 
 module.exports = Transparencia;
