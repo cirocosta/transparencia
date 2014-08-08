@@ -31,8 +31,9 @@
   },
   "dependencies": {
     "browser-request": "^0.3.2",
+    "q": "^1.0.1",
     "request": "^2.39.0",
-    "q": "^1.0.1"
+    "tillthen": "^0.3.4"
   },
   "devDependencies": {
     "browserify": "^5.8.1",
