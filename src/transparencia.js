@@ -2,7 +2,7 @@
 
 var request = require('request')
   , qs = require('querystring')
-  , q = require('q')
+  , tillthen = require('tillthen')
   , API_SERVER = 'https://api.transparencia.org.br/api/v1';
 
 function empty (obj) {
@@ -18,7 +18,7 @@ function Transparencia (token) {
 }
 
 Transparencia.prototype.get = function (url, ops) {
-  var dfd = q.defer();
+  var dfd = tillthen.defer();
 
   request.get({
     uri: this.url || url,
