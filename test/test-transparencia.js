@@ -68,7 +68,7 @@ describe('Transparencia', function() {
       done();
     });
 
-    it('call correct list endpoint', function() {
+    it('call correct list endpoint /candidato', function() {
       transp.candidatos().get();
 
       var expected = 'https://api.transparencia.org.br/api/v1/candidatos';
@@ -102,6 +102,16 @@ describe('Transparencia', function() {
       transp.candidatos('ID').doadores({anoEleitoral: '2010'}).get();
 
       var expected = {anoEleitoral: '2010'};
+      var actual = request.get.getCall(0).args[0].qs;
+
+      assert(request.get.calledOnce);
+      assert.deepEqual(actual, expected);
+    });
+
+    it('call correct list endpoint /candidato with pagination', function() {
+      transp.candidatos().paginate(0, 100).get();
+
+      var expected = {_offset: 0, _limit: 100};
       var actual = request.get.getCall(0).args[0].qs;
 
       assert(request.get.calledOnce);
