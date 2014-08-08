@@ -80,6 +80,10 @@ Transparencia.prototype.excelencias = function (a, b) {
  * Complementary -- called after
  */
 
+Transparencia.prototype.paginate = function (o, l) {
+  return (this._prepare({_offset: o, _limit: l}), this);
+};
+
 Transparencia.prototype.bens = function (a) {
   return (this._prepare('bens', a), this);
 };
