@@ -1,0 +1,18 @@
+{
+  "name": "transparencia",
+  "homepage": "https://github.com/cirocosta/transparencia",
+  "authors": [
+    "Ciro S. Costa <ciro.costa@usp.br>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "transparencia": "~0.0.2"
+  }
+}
