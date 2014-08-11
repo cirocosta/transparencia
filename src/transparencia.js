@@ -29,7 +29,7 @@ Transparencia.prototype.get = function (url, ops) {
       'App-Token': this.token
     }}, function (err, res, body) {
       if (err) dfd.reject(err);
-      else dfd.resolve(res);
+      else dfd.resolve(res.body);
     });
 
   return dfd.promise;

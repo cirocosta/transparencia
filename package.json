@@ -1,7 +1,7 @@
 {
   "name": "transparencia",
-  "version": "0.0.1",
-  "description": "Um wrapper javascript sobre a do dev.transparencia.gov.br",
+  "version": "0.0.2",
+  "description": "Wrapper javascript sobre a API do dev.transparencia.gov.br",
   "main": "src/transparencia.js",
   "scripts": {
     "test": "mocha test"
@@ -31,13 +31,13 @@
   },
   "dependencies": {
     "browser-request": "^0.3.2",
-    "q": "^1.0.1",
     "request": "^2.39.0",
     "tillthen": "^0.3.4"
   },
   "devDependencies": {
     "browserify": "^5.8.1",
     "gulp": "^3.8.7",
+    "gulp-header": "^1.0.5",
     "gulp-rename": "^1.2.0",
     "gulp-uglify": "^0.3.1",
     "mocha": "^1.21.4",
