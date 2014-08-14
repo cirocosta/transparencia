@@ -1,7 +1,6 @@
 'use strict';
 
 var request = require('request')
-  , qs = require('querystring')
   , tillthen = require('tillthen')
   , API_SERVER = 'https://api.transparencia.org.br/api/v1';
 
